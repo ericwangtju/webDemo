@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS3属性选择器-属性选择器</title>
+    <style>
+      button {
+        cursor: pointer;
+      }
+
+      button[disabled] {
+        cursor: default;
+      }
+      input[type='search'] {
+        color: blue;
+      }
+
+      div[class^='icon'] {
+        color: red;
+      }
+      div[class$='icon'] {
+        color: red;
+      }
+      div[class*='icon'] {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button disabled>按钮</button>
+    <button disabled>按钮</button>
+
+    <input type="text" name="" id="" value="文本框" />
+    <input type="text" name="" id="" value="文本框" />
+    <input type="text" name="" id="" value="文本框" />
+    <input type="search" name="" id="" value="搜索框" />
+    <input type="search" name="" id="" value="搜索框" />
+    <input type="search" name="" id="" value="搜索框" />
+
+    <div class="icon1">icon1</div>
+    <div class="icon2">icon2</div>
+    <div class="icon3">icon3</div>
+  </body>
+</html>

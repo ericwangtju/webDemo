@@ -1,0 +1,22 @@
+.header {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+  a {
+    color: red;
+    // 如果有伪类选择器，伪元素选择器，内层选择器的前面需要加&
+    &:hover {
+      color: purple;
+    }
+  }
+}
+
+.nav {
+  background-color: blue;
+  .logo {
+    color: green;
+  }
+  &::before {
+    content: "";
+  }
+}

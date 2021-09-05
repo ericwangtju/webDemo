@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>传统的注册事件</button>
+  <button>
+    方法舰艇注册事件
+  </button>
+  <button>
+    attchement
+  </button>
+  <script>
+    // 1. 传统的方式i， 注册时间的唯一性
+    // 2. 方法舰艇注册时间
+    var btns = document.querySelectorAll('button')
+    btns[0].onclick = function () {
+      alert('hi')
+    }
+    btns[0].onclick = function () {
+      alert('hello')
+    }
+
+    // 
+    btns[1].addEventListener('click', function (event) {
+      console.log('222')
+    })
+    btns[1].addEventListener('click', function (event) {
+      console.log('3')
+    })
+
+    // btn[2].attachEvent('onclick', function () {
+    //   console.log('44')
+    // })
+  </script>
+</body>
+
+</html>

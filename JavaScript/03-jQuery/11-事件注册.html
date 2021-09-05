@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./jquery.min.js"></script>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: purple;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+  </div>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+
+  <script>
+    // $('div').click(function () {
+    //   console.log('hahah');
+    //   $(this).css("background", 'red')
+    // })
+    // $('div').mouseenter(function () {
+    //   console.log('hahah');
+    //   $(this).css("background", 'blue')
+    // })
+    // 多次绑定
+    // $('div').on({
+    //   mouseenter: function () {
+    //     $(this).css("background", 'blue')
+    //   },
+    //   click: function () {
+    //     $(this).css("background", 'red')
+    //   }
+    // })
+
+    $('div').on('mouseenter mouseleave', function () {
+      $(this).css("background", 'red')
+    }
+    )
+
+    // on 实现事件委托
+    $('ul').on('click', 'li', function () {
+      console.log('111');
+    })
+
+    // on 可以给未来动态床架你的元素绑定事件
+  </script>
+</body>
+
+</html>

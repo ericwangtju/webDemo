@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./jquery.min.js"></script>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+
+  </div>
+  <script>
+    // $(document).ready(function () {
+
+    // })
+    // $(function () {
+    //   $('div').hide()
+    // })
+
+    // $是顶级对象
+    // jQuery(function () {
+    //   $('div').hide()
+    // })
+
+
+    // jquery对象和原声的dom对象进行转换
+    var div = $('div')
+    var div1 = document.querySelector('div')
+    var div3 = $(div1)
+
+    console.dir(div);
+    console.dir(div3)
+
+
+    console.dir(div3[0])
+  </script>
+
+</body>
+
+</html>

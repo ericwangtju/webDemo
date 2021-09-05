@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1. keyup 键盘谈起
+    document.onkeyup = function (e) {
+      // console.log(e);
+    }
+    //2. Key down
+    document.onkeydown = function (e) {
+      // console.log(e);
+    }
+    // 3. keypress 不能识别功能键  
+    document.onkeypress = function (e) {
+      // press 事件区分大小写
+      console.log(e.keyCode);
+    }
+  </script>
+</body>
+
+</html>

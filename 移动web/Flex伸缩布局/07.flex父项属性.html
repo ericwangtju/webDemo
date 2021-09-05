@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        display: flex;
+        width: 80%;
+        height: 300px;
+        background-color: pink;
+        /* 主轴默认是row */
+        /* 我们的元素是跟着主轴来排列 */
+        /* flex-direction: column; */
+        /* flex-direction: row; */
+
+        /* 设置主轴上的子元素排列方式 */
+        /* justify-content: flex-start; */
+        /* justify-content: flex-end; */
+        justify-content: center;
+
+        /* 平分剩余空间 */
+        /* justify-content: space-around; */
+        /* 先两边贴边, 在平分 */
+        /* justify-content: space-between; */
+
+        /* flex布局中, 默认的子元素是不换行的, 如果装不开, 会缩小子元素的宽(高) */
+        /* flex-wrap: wrap; */
+
+        /* 设置元素在侧轴的排列方式 , 适合单行的子元素*/
+        /* align-items: flex-start; */
+        /* align-items: flex-end; */
+        /* align-items: center; */
+        /* 拉伸, 子盒子不能给高度 */
+        /* align-items: stretch; */
+
+        /* align-content 设置元素在侧轴的排列方式 , 适合多行的子元素(换行),在单行没有效果
+         */
+        /* align-content: space-between; */
+        align-content: space-around;
+
+        flex-flow: column wrap;
+      }
+      div span {
+        width: 200px;
+        height: 100px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span>1</span><span>2</span><span>3</span> <span>4</span><span>5</span>
+    </div>
+  </body>
+</html>

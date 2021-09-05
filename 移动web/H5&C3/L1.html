@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>新增语义标签</title>
+    <style>
+      header,
+      nav,
+      section {
+        height: 120px;
+        background-color: green;
+        margin: 10px;
+      }
+      .phone {
+        width: 375px;
+        height: 680px;
+      }
+      video {
+        width: 375px;
+        height: 680px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>header</header>
+    <nav>nav</nav>
+    <article>article</article>
+    <section>section</section>
+    <aside>aside</aside>
+    <footer>footer</footer>
+
+    <!-- <audio controls>
+      <source src="media/snow.mp3" />
+      <source src="media/snow.ogg" />
+      你的浏览器太low了, 不支持audio播放
+    </audio> -->
+    <div class="phone">
+      <video controls muted loop poster="media/pig.jpg">
+        <source src="media/video.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </body>
+</html>

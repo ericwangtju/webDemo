@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./jquery.min.js"></script>
+  <style>
+  </style>
+</head>
+
+<body>
+
+  <div class=".nav">
+
+  </div>
+  <ol>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script>
+    $(function () {
+      var nav = $('.nav')  // 磊选择器
+
+      //子代选择其
+      $('ul>li')
+
+      // 后代选择器
+      $('ul li')
+
+      // 修改背景颜色
+      // nav.css('backgroundColor', 'pink')
+
+      // 隐式叠戴
+      // 自动帮你把元素便利
+      // 筛选选择器
+      // $('ul li:first').css('backgroundColor', 'pink')
+      // $('ul li:eq(2)').css('backgroundColor', 'blue')
+      // $('ul li:odd').css('backgroundColor', 'blue')
+      // $('ul li:even').css('backgroundColor', 'pink')
+
+      // 帅选方法
+      $('li').parent()
+    })
+
+  </script>
+
+</body>
+
+</html>

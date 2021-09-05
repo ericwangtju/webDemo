@@ -1,0 +1,20 @@
+// 1. 变量命名 必须以@开头
+
+@fontSmallSize: 14px;
+@color: pink;
+
+// 错误的命名 @1color @color~*#
+// 变量名区分大小写的
+
+body {
+  background-color: @color;
+}
+
+div {
+  color: @color;
+  font-size: @fontSmallSize;
+}
+
+a {
+  font-size: @fontSmallSize;
+}

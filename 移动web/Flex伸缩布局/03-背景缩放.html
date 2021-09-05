@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 500px;
+        height: 500px;
+        border: 2px solid red;
+        background: url(images/dog.jpg) no-repeat;
+        /* 当只写一个参数,会等比例缩放 */
+        /* background-size: 500px; */
+        /* background-size: 100%; */
+        /* cover 按照最小边长拉伸, 其他剪裁 */
+        /* background-size: cover; */
+        /* contain 按照最大拉伸 */
+        background-size: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

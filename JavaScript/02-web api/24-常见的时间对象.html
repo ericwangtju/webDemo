@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a href="https://www.baidu.com
+">12344</a>
+  <div>123</div>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+
+  <script>
+    var div = document.querySelector('div')
+    div.addEventListener('click', function (e) {
+      console.log(e.target);
+      console.log(this);
+    })
+
+    var ul = document.querySelector('ul')
+    ul.addEventListener('click', function (e) {
+      // 阻止默认
+      e.preventDefault()
+      console.log(this)
+      console.log(e.type)
+
+
+    })
+
+    var a = document.querySelector('a')
+    a.addEventListener('click', function (e) {
+      e.preventDefault()
+    })
+
+
+
+  </script>
+</body>
+
+</html>

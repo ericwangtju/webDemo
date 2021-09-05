@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      section {
+        display: flex;
+        width: 60%;
+        height: 150px;
+        background-color: pink;
+        margin: 0 auto;
+        flex-flow: row wrap;
+        justify-content: space-between;
+      }
+      section div:nth-child(1) {
+        width: 100px;
+        height: 150px;
+        background-color: blue;
+      }
+      section div:nth-child(3) {
+        width: 100px;
+        height: 150px;
+        background-color: red;
+      }
+
+      section div:nth-child(2) {
+        background-color: green;
+        flex: 1;
+      }
+
+      p {
+        display: flex;
+        width: 60%;
+        height: 200px;
+        background-color: pink;
+        margin: 100px auto;
+        align-items: center;
+      }
+      p span {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+      }
+      p span:nth-child(3) {
+        /* 单独设置单个项目 */
+        align-self: flex-end;
+        /* 默认是0 ,  */
+        order: -1;
+      }
+
+      p span:nth-child(2) {
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div></div>
+      <div></div>
+      <div></div>
+    </section>
+    <p>
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+    </p>
+  </body>
+</html>
