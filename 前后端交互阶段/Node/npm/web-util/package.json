@@ -1,0 +1,11 @@
+{
+  "name": "web-utils",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "jsjfjs",
+  "keywords": [
+    "utils",
+    "web"
+  ],
+  "license": "ISC"
+}
