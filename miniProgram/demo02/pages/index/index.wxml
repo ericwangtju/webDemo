@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view>{{info}}</view>
+<image src="{{imgSrc}}" mode="widthFix"></image>
+<view>{{randomNum>=5?'111':"222"}}</view>
+<view>{{randomNum2*10}}</view>
+<button bindtap="btnTapHandler" data-info="{{2}}">click</button>
+<input value="{{msg}}" bindinput="inputHandler"></input>
+<view wx:if="{{showView}}">true</view>
+
+<block wx:if="{{false}}">
+    <button>123</button>
+    <view>456</view>
+</block>
+
+<button hidden="{{false}}">hidden</button>
+
+<button wx:for="{{array}}" wx:for-index="idx" wx:for-item="item" class="username">
+{{idx}}---{{item}}
+
+</button>
+
+<button wx:for="{{array}}" wx:key="id"></button>
+<button bindtap="getRequest">发起get请求</button>
+<button bindtap="postRequest">发起post请求</button>
+<navigator url="/pages/logs/logs" open-type="switchTab">navigatorToTabbar</navigator>
+<navigator url="/pages/info/info?name=zs&age=20" open-type="navigate">navigatorToPages</navigator>
+<button bindtap="goMessage">tiaozhuan dao tabbar</button>
+<button bindtap="goInfo">tiaozhuan dao infos</button>
+
+<view class="box"></view>
