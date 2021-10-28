@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <a href="#/zhuye">主页</a>
+        <a href="#/keji">科技</a>
+        <a href="#/caijing">财经</a>
+        <a href="#/yule">娱乐</a>
+        <compontent :is="comName"></compontent>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                comName: 'zhuye'
+            },
+            components: {
+                zhuye: {
+                    template: '<div>zhuye</div>'
+                },
+                keji: {
+                    template: '<div>keji</div>'
+                },
+                caijing: {
+                    template: '<div>caijing</div>'
+                },
+                yule: {
+                    template: '<div>yule</div>'
+                },
+            }
+        })
+
+        window.onhashchange = function () {
+            console.log(window.location.hash);
+            switch (location.hash.slice(1)) {
+                case '/zhuye':
+                    app.comName = 'zhuye'
+                    break;
+                case '/keji':
+                    app.comName = 'keji'
+                    break;
+                case '/caijing':
+                    app.comName = 'caijing'
+                    break;
+                case '/yule':
+                    app.comName = 'yule'
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

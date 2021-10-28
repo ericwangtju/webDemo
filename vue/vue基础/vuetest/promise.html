@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="vue.js"></script>
+    <script>
+        // var p = new Promise(function (resolve, reject) {
+        //     // 这里实现异步任务
+        //     setTimeout(() => {
+        //         var flag = false
+        //         if (flag) {
+        //             resolve('hello')
+        //         } else {
+        //             reject('出错了')
+        //         }
+        //     }, 100);
+        // })
+
+        // p.then(function (data) {
+        //     console.log(data);
+        // }), function (info) {
+        //     console.log(info);
+        // }
+
+
+
+
+        // p.then(function (data) {
+        //     console.log(data);
+        // }), function (info) {
+        //     console.log(info);
+        // }
+
+
+        function queryData(url) {
+            return new Promise(function (resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState != 4) {
+                        return
+                    }
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // 请求成功
+                        resolve(xhr.responseText)
+                    } else {
+                        // 处理异常
+                        reject('服务器错误')
+                    }
+                }
+                xhr.open('get', url);
+                xhr.send(null)
+            })
+        }
+
+        queryData('')
+            .then(function (data) {
+                console.log(data);
+            }, function (info) {
+                console.log(info);
+            })
+            .finally(function () {
+                console.log('123123');
+            })
+        fetch()
+            .then()
+            .catch()
+            .finally()
+    </script>
+</body>
+
+</html>

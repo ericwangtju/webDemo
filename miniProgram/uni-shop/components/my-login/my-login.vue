@@ -34,7 +34,7 @@
       async getToken(info) {
         // 获取 code 对应的值
         const [err, res] = await uni.login().catch(err => err)
-
+        console.log(res)
         if (err || res.errMsg !== 'login:ok') return uni.$showMsg('登录失败！')
 
         // 准备参数

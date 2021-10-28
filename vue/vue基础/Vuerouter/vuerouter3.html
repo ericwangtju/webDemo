@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue_2.5.22.js"></script>
+    <script src="vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            <router-link to='/user/1'>User1</router-link>
+            <router-link to='/user/2'>User2</router-link>
+            <router-link to='/user/3'>User3</router-link>
+
+            <router-link to='/register'>注册</router-link>
+        </p>
+        <div>
+            <!-- 路由填充 -->
+            <router-view />
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <script>
+        var User = {
+            props: ['id', 'uname', 'age'],
+            template: '<h1>用户id为:{{id}}=={{uname}}=={{age}}</h1>'
+
+        }
+
+
+        var Register = {
+            template: `
+            <div>
+            <h1>Register zhujia</h1>
+            <hr />
+            <router-link to="/register/tab1">
+                Tab1
+            </router-link>
+            <router-link to="/register/tab2">Tab2</router-link>
+
+            <router-view />
+        </div>
+            `
+        }
+
+        var Tab1 = {
+            template: '<h1>tab1</h1>'
+        }
+
+        var Tab2 = {
+            template: '<h1>tab2</h1>'
+        }
+
+
+        var router = new VueRouter({
+            routes: [{ path: '/', redirect: '/user', component: User },
+            { path: '/user/:id', component: User, props: { uname: 'lisi', age: 20 } },
+            {
+                path: '/register',
+                component: Register,
+                children: [
+                    { path: '/register/tab1', component: Tab1 },
+                    { path: '/register/tab2', component: Tab2 }
+                ]
+            }
+            ]
+        })
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            router: router
+        })
+
+
+    </script>
+</body>
+
+</html>

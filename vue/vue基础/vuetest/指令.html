@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="App" v-on:click="click0">
+        <div> {{msg}}</div>
+        <div v-text='msg'></div>
+        <div v-html='msg1'></div>
+        <div v-pre>{{msg}}</div>
+        <input v-model="msg">
+        <input type="button" @click="click1($event)">
+    </div>
+
+    <script src="./vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: "#App",
+            data: {
+                msg: 1,
+                msg1: '<h1>HTML</h1>'
+            },
+            methods: {
+                click0: function () {
+                    console.log('haha');
+                },
+                click1: function (event) {
+                    event.stopPropagation();
+                    console.log('hhehe');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
