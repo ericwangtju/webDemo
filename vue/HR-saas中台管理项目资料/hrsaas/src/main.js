@@ -14,6 +14,8 @@ import router from './router'
 import * as directives from '@/directives'
 import '@/icons' // icon
 import '@/permission' // permission control
+import Component from '@/components'
+import * as filters from '@/filters' // 引入工具类
 
 /**
  * If you don't want to use mock-server
@@ -38,6 +40,13 @@ Object.keys(directives).forEach(key => {
 })
 
 Vue.config.productionTip = false
+Vue.use(Component)
+
+// 注册全局的过滤器
+Object.keys(filters).forEach(key => {
+  // 注册过滤器
+  Vue.filter(key, filters[key])
+})
 
 new Vue({
   el: '#app',
