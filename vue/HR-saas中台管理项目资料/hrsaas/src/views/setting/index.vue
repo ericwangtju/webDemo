@@ -7,7 +7,11 @@
           <el-tab-pane label="角色管理">
             <!-- 新增角色按钮 -->
             <el-row style="height:60px">
-              <el-button type="primary" size="small" @click="showDialog = true">新增角色</el-button>
+              <el-button
+                type="primary"
+                size="small"
+                @click="showDialog = true"
+              >新增角色</el-button>
             </el-row>
             <!-- 表格 -->
             <el-table
@@ -35,13 +39,24 @@
                 label="操作"
                 align="center"
               >
-<template slot-scope="{row}"><el-button
-                  size="small"
-                  type="success"
-                >分配权限</el-button>
-                 <el-button size="small" type="primary" @click="editRole(row.id)">编辑</el-button>
-                <el-button size="small" type="danger" @click="deleteRole(row.id)">删除</el-button></template>
-                
+                <template slot-scope="{row}">
+                  <el-button
+                    size="small"
+                    type="success"
+                    @click="assignPerm(row.id)"
+                  >分配权限</el-button>
+                  <el-button
+                    size="small"
+                    type="primary"
+                    @click="editRole(row.id)"
+                  >编辑</el-button>
+                  <el-button
+                    size="small"
+                    type="danger"
+                    @click="deleteRole(row.id)"
+                  >删除</el-button>
+                </template>
+
               </el-table-column>
             </el-table>
             <!-- 分页组件 -->
@@ -77,7 +92,6 @@
                   disabled
                   style="width:400px"
                   v-model="formData.name"
-                  disabled 
                 />
               </el-form-item>
               <el-form-item label="公司地址">
@@ -85,7 +99,6 @@
                   disabled
                   style="width:400px"
                   v-model="formData.companyAddress"
-                  disabled 
                 />
               </el-form-item>
               <el-form-item label="邮箱">
@@ -93,7 +106,6 @@
                   disabled
                   style="width:400px"
                   v-model="formData.mailbox"
-                  disabled 
                 />
               </el-form-item>
               <el-form-item label="备注">
@@ -103,7 +115,6 @@
                   disabled
                   style="width:400px"
                   v-model="formData.remarks"
-                  disabled 
                 />
               </el-form-item>
             </el-form>
@@ -112,9 +123,21 @@
         </el-tabs>
       </el-card>
     </div>
-     <el-dialog title="编辑弹层" :visible="showDialog" @close="btnCancel">
-      <el-form ref="roleForm" :model="roleForm" :rules="rules" label-width="120px">
-        <el-form-item label="角色名称" prop="name">
+    <el-dialog
+      title="编辑弹层"
+      :visible="showDialog"
+      @close="btnCancel"
+    >
+      <el-form
+        ref="roleForm"
+        :model="roleForm"
+        :rules="rules"
+        label-width="120px"
+      >
+        <el-form-item
+          label="角色名称"
+          prop="name"
+        >
           <el-input v-model="roleForm.name" />
         </el-form-item>
         <el-form-item label="角色描述">
@@ -122,10 +145,59 @@
         </el-form-item>
       </el-form>
       <!-- 底部 -->
-      <el-row slot="footer" type="flex" justify="center">
+      <el-row
+        slot="footer"
+        type="flex"
+        justify="center"
+      >
         <el-col :span="6">
-          <el-button size="small" @click="btnCancel">取消</el-button>
-          <el-button size="small" type="primary" @click="btnOK">确定</el-button>
+          <el-button
+            size="small"
+            @click="btnCancel"
+          >取消</el-button>
+          <el-button
+            size="small"
+            type="primary"
+            @click="btnOK"
+          >确定</el-button>
+        </el-col>
+      </el-row>
+    </el-dialog>
+    <el-dialog
+      title="分配权限"
+      :visible="showPermDialog"
+      @close="btnPermCancel"
+    >
+      <!-- 权限是一颗树 -->
+      <!-- 将数据绑定到组件上 -->
+      <!-- check-strictly 如果为true 那表示父子勾选时  不互相关联 如果为false就互相关联 -->
+      <!-- id作为唯一标识 -->
+      <el-tree
+        ref="permTree"
+        :data="permData"
+        :props="defaultProps"
+        :show-checkbox="true"
+        :check-strictly="true"
+        :default-expand-all="true"
+        :default-checked-keys="selectCheck"
+        node-key="id"
+      />
+      <!-- 确定 取消 -->
+      <el-row
+        slot="footer"
+        type="flex"
+        justify="center"
+      >
+        <el-col :span="6">
+          <el-button
+            type="primary"
+            size="small"
+            @click="btnPermOK"
+          >确定</el-button>
+          <el-button
+            size="small"
+            @click="btnPermCancel"
+          >取消</el-button>
         </el-col>
       </el-row>
     </el-dialog>
@@ -133,12 +205,21 @@
 </template>
 
 <script>
-import { getRoleList,getCompanyInfo,deleteRole,updateRole,getRoleDetail,addRole } from '@/api/setting'
-import {mapGetters}from 'vuex'
+import { getRoleList, getCompanyInfo, deleteRole, updateRole, getRoleDetail, addRole, assignPerm } from '@/api/setting'
+import { mapGetters } from 'vuex'
+import { tranListToTreeData } from '@/utils'
+import { getPermissionList } from '@/api/permission'
 export default {
   data () {
     return {
-showDialog: false,
+      selectCheck: [],
+      roleId: '',
+      defaultProps: {
+        label: 'name'
+      },
+      permData: [],
+      showPermDialog: false,
+      showDialog: false,
       // 专门接收新增或者编辑的编辑的表单数据
       roleForm: {},
       rules: {
@@ -156,19 +237,37 @@ showDialog: false,
       }
     }
   },
+  computed: {
+    ...mapGetters(['companyId'])
+  },
   created () {
     this.getRoleList() // 获取角色列表
     this.getCompanyInfo()
   },
-  computed: {
-    ...mapGetters(['companyId'])
-  },
   methods: {
-    async editRole(id) {
-      this.roleForm = await getRoleDetail(id)
-      this.showDialog = true // 为了不出现闪烁的问题 先获取数据 再弹出层
+    // 点击分配权限
+    // 获取权限点数据 在点击的时候调用 获取权限点数据
+    async assignPerm (id) {
+      this.permData = tranListToTreeData(await getPermissionList(), '0') // 转化list到树形数据
+      this.roleId = id
+      // 应该去获取 这个id的 权限点
+      // 有id 就可以 id应该先记录下来
+      const { permIds } = await getRoleDetail(id) // permIds是当前角色所拥有的权限点数据
+      this.selectCheck = permIds // 将当前角色所拥有的权限id赋值
+      this.showPermDialog = true
     },
-    async btnOK() {
+    async btnPermOK () {
+      // 调用el-tree的方法
+      // console.log(this.$refs.permTree.getCheckedKeys())
+      await assignPerm({ permIds: this.$refs.permTree.getCheckedKeys(), id: this.roleId })
+      this.$message.success('分配权限成功')
+      this.showPermDialog = false
+    },
+    btnPermCancel () {
+      this.selectCheck = [] // 重置数据
+      this.showPermDialog = false
+    },
+    async btnOK () {
       try {
         await this.$refs.roleForm.validate()
         // 只有校验通过的情况下 才会执行await的下方内容
@@ -187,7 +286,7 @@ showDialog: false,
         console.log(error)
       }
     },
-    btnCancel() {
+    btnCancel () {
       this.roleForm = {
         name: '',
         description: ''
@@ -196,8 +295,8 @@ showDialog: false,
       this.$refs.roleForm.resetFields()
       this.showDialog = false
     },
-    async getCompanyInfo() {
-     this.formData= await getCompanyInfo(this.companyId)
+    async getCompanyInfo () {
+      this.formData = await getCompanyInfo(this.companyId)
     },
     async getRoleList () {
       const { total, rows } = await getRoleList(this.page)
@@ -209,7 +308,7 @@ showDialog: false,
       this.page.page = newPage // 将当前页码赋值给当前的最新页码
       this.getRoleList()
     },
-    async deleteRole(id) {
+    async deleteRole (id) {
       //  提示
       try {
         await this.$confirm('确认删除该角色吗')
