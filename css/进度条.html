@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* div {
+        width: 200px;
+        height: 100px;
+        background-color: pink;
+        transition: width 1s ease 1s;
+      }
+
+      div:hover {
+        width: 400px;
+      } */
+      .bar {
+        width: 150px;
+        height: 15px;
+        border: 1px solid red;
+        border-radius: 7px;
+        padding: 1px;
+      }
+      .bar:hover .bar-1 {
+        width: 100%;
+      }
+      .bar-1 {
+        width: 50%;
+        height: 100%;
+        background-color: red;
+        transition: width 1s ease 0s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar">
+      <div class="bar-1"></div>
+    </div>
+  </body>
+</html>

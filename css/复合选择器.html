@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 后代选择器 */
+      /* ol li {
+        color: pink;
+      }
+      ol li a {
+        color: red;
+      }
+
+      ul li {
+        color: aqua;
+      }
+
+      .nav li {
+        color: yellow;
+      } */
+
+      /* 子代选择器 */
+
+      /* .nav > a {
+        color: red;
+      } */
+
+      /* 并集选择器 */
+      /* div,
+      p,
+      .pig li {
+        color: pink;
+      }
+
+      span {
+        color: red;
+      } */
+
+      /* 伪类选择器 */
+      a:link {
+        /* 未坊问的链接 */
+        color: red;
+      }
+      a:visited {
+        /* 已问的链接 */
+        color: gray;
+      }
+      a:hover {
+        /* 选择的是悬停的那个链接 */
+        color: green;
+      }
+
+      a:active {
+        /* 选择的是我们鼠标正在按下还没有弹起的那个链接 */
+        color: pink;
+      }
+
+      /* :focus 伪类选择器 
+      把获得光标的input表单元素选择出来
+      */
+      input:focus {
+        background-color: yellow;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+      后代选择器
+      <ol>
+      hahah
+
+      <li>我是ol的孩子</li>
+      <li>我是ol的孩子</li>
+      <li>我是ol的孩子</li>
+      <li><a href="">我是孙子</a></li>
+      <a href="">我是孩子</a>
+    </ol>
+
+    <ul>
+      <li>我是ul的孩子</li>
+      <li>我是ul的孩子</li>
+      <li>我是ul的孩子</li>
+      <li><a href="">我是孙子</a></li>
+    </ul>
+
+    <ul class="nav">
+      <li>我是ul的孩子</li>
+      <li>我是ul的孩子</li>
+      <li>我是ul的孩子</li>
+      <li><a href="">我是孙子</a></li>
+    </ul> -->
+
+    <!-- 子代选择器
+    <div class="nav">
+      <a href="#">我是儿子</a>
+      <p>
+        <a href="#">我是孙子</a>
+      </p>
+    </div> -->
+
+    <!-- 并集选择器 -->
+    <!-- <div>熊大</div>
+    <p>熊二</p>
+    <span>光头强</span>
+    <ul class="pig">
+      <li>小猪佩琪</li>
+      <li>猪妈妈</li>
+      <li>猪爸爸</li>
+    </ul> -->
+
+    <!-- 伪类选择器
+    <a href="#">hahah</a> -->
+
+    :focus伪类选择器
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+  </body>
+</html>

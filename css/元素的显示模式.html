@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+
+      input {
+        width: 200px;
+        height: 200px;
+      }
+
+      a {
+        background-color: red;
+        display: block;
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 块元素和行内元素 -->
+
+    <!-- 块元素
+    div h1 p ul ol li
+    独占一行
+    宽度和高度都可以控制
+    宽度默认是容器100%
+    是一个容器,里面放其他的元素
+
+    文字类的标签内不能使用块级元素
+    p标签里面不能放块级元素, 特别是不能放div
+    -->
+    <!-- <div>比较宝岛</div>
+    瑟瑟发抖 -->
+
+    <!-- 错误的实例
+    <p>
+        <div>hasfhshfk</div>
+    </p> -->
+
+    <!-- 行内元素
+    a strong b em i del s ins u span
+    相邻的行内元素在一行上
+    设置宽高设置是无效的
+    默认宽度就是内容的宽度
+    行内元素稚嫩容纳文本或者其他行内元素
+    a里面不能在放a
+    特殊情况链接a里面可以放块级元素, 但是给a标签转换为块级元素最安全    
+    
+    -->
+
+    <!-- <a href="#"><a href="hah">sjfksjf </a></a> -->
+
+    <!-- 行内块元素 -->
+    <!-- input td img同时具有块元素和行内元素的特点
+        一行可以显示多个
+        本身的宽度是内容宽度
+        宽度和高度可以设置
+    -->
+    <!-- <input type="text" />
+    <input type="text" />
+    <input type="text" /> -->
+
+    元素显示模式的转换
+    <a href="#">百度一下 </a>
+
+    <div style="display: inline">fjkslfjklwjf</div>
+    <span style="display: inline-block; width: 200px">2j3412j312</span>
+  </body>
+</html>
